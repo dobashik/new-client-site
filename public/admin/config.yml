@@ -2,16 +2,16 @@ backend:
   name: git-gateway
   branch: main
 
-media_folder: "public/uploads"
+media_folder: "public/uploads" # 画像などのアップロード先
 public_folder: "/uploads"
 
 collections:
-  - name: "pages"
-    label: "HTMLファイル"
-    files:
-      - file: "public/index.html" # 編集したいHTMLファイルの場所
-        label: "トップページ"
-        name: "index"
-        fields: # ← この fields の中身が重要です！
-          - {label: "ページのタイトル", name: "title", widget: "string"}
-          - {label: "メインの文章", name: "body", widget: "markdown"}
+  - name: "blog" # システムが使う内部名
+    label: "ブログ" # 管理画面に表示される名前
+    folder: "posts" # ブログ記事が保存されるフォルダ
+    create: true # 新しい記事の作成を許可
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # ファイル名を自動で生成するルール
+    fields: # 記事の編集項目
+      - { label: "タイトル", name: "title", widget: "string" }
+      - { label: "公開日", name: "date", widget: "datetime" }
+      - { label: "本文", name: "body", widget: "markdown" }
