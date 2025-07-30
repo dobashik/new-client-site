@@ -7,11 +7,11 @@ public_folder: "/uploads"
 
 collections:
   - name: "pages"
-    label: "ホームページ編集"
+    label: "HTMLファイル"
     files:
-      - label: "トップページ"
-        name: "homepage"
-        file: "content/homepage.md"
-        fields:
+      - file: "public/index.html" # 編集したいHTMLファイルの場所
+        label: "トップページ"
+        name: "index"
+        fields: # ← この fields の中身が重要です！
           - {label: "ページのタイトル", name: "title", widget: "string"}
-          - {label: "本文", name: "body", widget: "markdown"}
+          - {label: "メインの文章", name: "body", widget: "markdown"}
